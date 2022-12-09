@@ -7,10 +7,11 @@ if (!$_SESSION['username']) {
 } else {
     $conn = new mysqli('localhost', 'root', '');
     mysqli_select_db($conn, 'ambient');
-    $sql = "SELECT `id`,`fullname`,`email` , `phone_number` , `company` , `product_cata`, `state`, `messages` ,`date` FROM `get_query`";
+    $sql = "SELECT `id`,`fullname`,`email` , `phone_number` , `company` , `product_cata`, `state`, `messages` ,`modified_time` FROM `get_query`";
     $setRec = mysqli_query($conn, $sql);
+    // CONVERT_TZ(modified_time,'+00:00','+11:30') modified_time
     $columnHeader = '';
-    $columnHeader = "Id" . "\t" . "fullname" . "\t" . "email" . "\t" . "phone_number" . "\t" . "company" . "\t" . "product_cata" . "\t" . "state" . "\t" . "messages" . "\t" . "date" . "\t";
+    $columnHeader = "Id" . "\t" . "fullname" . "\t" . "email" . "\t" . "phone_number" . "\t" . "company" . "\t" . "product_cata" . "\t" . "state" . "\t" . "messages" . "\t" . "modified_time" . "\t";
     $setData = '';
     while ($rec = mysqli_fetch_row($setRec)) {
         $rowData = '';
